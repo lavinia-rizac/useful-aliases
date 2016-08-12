@@ -4,9 +4,9 @@ GIT=`which git`
 DIR='.dotfiles'
 
 if [[ ! -z "$ZSH" ]];then
-    ZSH_FILE='~/.zshrc'
+    ZSH_FILE="$HOME/.zshrc"
 else
-    ZSH_FILE='~/.bashrc'
+    ZSH_FILE="$HOME/.bashrc"
 fi
 
 ALIASES_SCRIPT='.dotfiles/aliases.sh'
@@ -16,9 +16,9 @@ if [[ ! -d "$HOME/$DIR" ]];then
     $GIT clone https://github.com/lavinia-rizac/useful-aliases.git "$HOME/$DIR"
 fi
 
-if [[ ! `cat ~/.zshrc | grep "$ALIASES_SCRIPT"` ]]; then
+if [[ ! `cat $ZSH_FILE | grep "$ALIASES_SCRIPT"` ]]; then
     echo "--register aliases--"
-    echo ". ~/$ALIASES_SCRIPT" >> ~/.zshrc
+    echo ". ~/$ALIASES_SCRIPT" >> $ZSH_FILE
 fi
 
 echo " "
